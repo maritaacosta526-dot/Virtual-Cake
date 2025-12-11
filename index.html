@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NYAP Team Accomplishment Cake</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>🎂 NYAP Team Accomplishment Cake</h1>
+      <div class="controls">
+        <button id="add-stick-btn">Add stick</button>
+        <button id="export-btn">Export JSON</button>
+        <label class="import-btn">
+          Import JSON
+          <input id="import-file" type="file" accept="application/json" />
+        </label>
+        <button id="clear-board-btn" title="Remove all sticks">Clear</button>
+      </div>
+    </header>
+
+    <section class="board-wrap">
+      <div id="cake-container" class="cake-container" aria-label="Celebration cake">
+        <div id="badge" class="nyap-badge" draggable="false" title="Drag me">
+          <!-- Simple NYAP badge -->
+          <img src="assets/logo.svg" alt="NYAP" />
+        </div>
+
+        <div class="cake">
+          <div class="tier tier-top"></div>
+          <div class="tier tier-mid"></div>
+          <div class="tier tier-bottom"></div>
+        </div>
+
+        <div id="sticks-layer" class="sticks-layer" aria-hidden="false"></div>
+
+        <canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+      </div>
+    </section>
+
+    <!-- Add Stick Modal -->
+    <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <form id="stick-form" class="modal-content">
+        <h2 id="modal-title">Add a stick</h2>
+        <label>
+          Name
+          <input name="name" type="text" required maxlength="60" />
+        </label>
+        <label>
+          Accomplishment
+          <textarea name="accomplishment" required maxlength="500"></textarea>
+        </label>
+        <label>
+          Flag color
+          <input name="color" type="color" value="#FFD24C" />
+        </label>
+        <label>
+          Stick height (%)
+          <input name="height" type="range" min="20" max="100" value="60" />
+        </label>
+        <div class="modal-actions">
+          <button type="submit">Add</button>
+          <button type="button" id="cancel-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Accomplishment popup -->
+    <div id="popup" class="popup hidden" role="status" aria-live="polite"></div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
